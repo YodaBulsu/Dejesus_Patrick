@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Users - ABC Colleges</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            width: 90%;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .student-card {
+            border: 3px solid black;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            background: #f9f9f9;
+            border-radius: 8px;
+        }
+
+        .student-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .student-info {
+            font-size: 12px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body onload="loadData()">
+    <h1>ABC Colleges - Library Users</h1>
+    <div id="students" class="grid-container"></div>
+
+    <xml id="xmldata" style="display: none;">
+        <students>
+            <student>
+                <name>Bronny James</name>
+                <course>BSIT</course>
+                <year_section>3AG2</year_section>
+                <adviser>Mr. Ramon Dela Cruz</adviser>
+                <school_year>2025-2026</school_year>
+                <photo>https://i.mydramalist.com/kAOrrr_5c.jpg</photo>
+            </student>
+            <student>
+                <name>Maria Santos</name>
+                <course>BSIT</course>
+                <year_section>3AG2</year_section>
+                <adviser>Mr. Ramon Dela Cruz</adviser>
+                <school_year>2025-2026</school_year>
+                <photo>https://i.pinimg.com/736x/c0/b3/87/c0b3876a4e9b14e20bd4ed19298e4fb3.jpg</photo>
+            </student>
+            <student>
+                <name>Isabella Cruz</name>
+                <course>BSIT</course>
+                <year_section>3AG2</year_section>
+                <adviser>Mr. Ramon Dela Cruz</adviser>
+                <school_year>2025-2026</school_year>
+                <photo>https://i.pinimg.com/736x/b2/da/f9/b2daf9019c4b08fa3a90c7d28a08a059.jpg</photo>
+            </student>
+            <student>
+                <name>Daniel Moreno</name>
+                <course>BSIT</course>
+                <year_section>3AG2</year_section>
+                <adviser>Mr. Ramon Dela Cruz</adviser>
+                <school_year>2025-2026</school_year>
+                <photo>https://i.pinimg.com/736x/c2/23/e7/c223e7ad1a559ee8e5f23173f4222696.jpg</photo>
+            </student>
+            <student>
+                <name>Emily Torres</name>
+                <course>BSIT</course>
+                <year_section>3AG2</year_section>
+                <adviser>Mr. Ramon Dela Cruz</adviser>
+                <school_year>2025-2026</school_year>
+                <photo>https://i.pinimg.com/736x/33/c4/e7/33c4e73331025cb9ca54b9d2e3b4b1cb.jpg</photo>
+            </student>
+            <student>
+                <name>Kevin Reyes</name>
+                <course>BSIT</course>
+                <year_section>3AG2</year_section>
+                <adviser>Mr. Ramon Dela Cruz</adviser>
+                <school_year>2025-2026</school_year>
+                <photo>https://i.pinimg.com/736x/f2/fa/a4/f2faa44cc72d5d11d59f031962f3c7bc.jpg</photo>
+            </student>
+            <student>
+                <name>Lucas Ramirez</name>
+                <course>BSIT</course>
+                <year_section>3AG2</year_section>
+                <adviser>Mr. Ramon Dela Cruz</adviser>
+                <school_year>2025-2026</school_year>
+                <photo>https://i.pinimg.com/736x/c3/ca/b5/c3cab5b336680ea41f335662669c6201.jpg</photo>
+            </student>
+            <student>
+                <name>Anna Fernandez</name>
+                <course>BSIT</course>
+                <year_section>3AG2</year_section>
+                <adviser>Mr. Ramon Dela Cruz</adviser>
+                <school_year>2025-2026</school_year>
+                <photo>https://i.pinimg.com/736x/86/e0/86/86e086efb17f46db00b20a433aca4a55.jpg</photo>
+            </student>
+            <student>
+                <name>Brandon Lee</name>
+                <course>BSIT</course>
+                <year_section>3AG2</year_section>
+                <adviser>Mr. Ramon Dela Cruz</adviser>
+                <school_year>2025-2026</school_year>
+                <photo>https://i.pinimg.com/736x/84/85/d3/8485d3e01dd904522f8852f0d67c1ede.jpg</photo>
+            </student>
+            <student>
+                <name>Lebron James</name>
+                <course>BSIT</course>
+                <year_section>3AG2</year_section>
+                <adviser>Mr. Ramon Dela Cruz</adviser>
+                <school_year>2025-2026</school_year>
+                <photo>https://i.pinimg.com/736x/67/c9/63/67c963f0cf75650cfd264121bcdac939.jpg</photo>
+            </student>
+        </students>
+    </xml>
+
+    <script>
+        function loadData() {
+            const xml = document.getElementById('xmldata');
+            const students = xml.getElementsByTagName('student');
+            let output = '';
+
+            for (let i = 0; i < students.length; i++) {
+                const name = students[i].getElementsByTagName('name')[0].textContent;
+                const course = students[i].getElementsByTagName('course')[0].textContent;
+                const year_section = students[i].getElementsByTagName('year_section')[0].textContent;
+                const adviser = students[i].getElementsByTagName('adviser')[0].textContent;
+                const school_year = students[i].getElementsByTagName('school_year')[0].textContent;
+                const photo = students[i].getElementsByTagName('photo')[0].textContent;
+
+                output += `
+                    <div class="student-card">
+                        <img src="${photo}" alt="Student Image">
+                        <div class="student-info">
+                            <p><b>Name:</b> ${name}</p>
+                            <p><b>Course:</b> ${course}</p>
+                            <p><b>Year Level / Section:</b> ${year_section}</p>
+                            <p><b>Adviser:</b> ${adviser}</p>
+                            <p><b>School Year:</b> ${school_year}</p>
+                        </div>
+                    </div>
+                `;
+            }
+
+            document.getElementById('students').innerHTML = output;
+        }
+    </script>
+</body>
+</html>
